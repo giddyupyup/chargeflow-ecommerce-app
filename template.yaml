@@ -1,0 +1,105 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Chargeflow Ecommerce App
+
+Globals:
+  Function:
+    Runtime: nodejs14.x
+    Timeout: 180
+    MemorySize: 256
+    Environment:
+      Variables:
+        REGION: ap-southeast-1
+
+Resources:
+  ChargeFlowECommerceApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Description: Api Gateway for ChargeFlow ECommerce
+      Cors: "'*'"
+      StageName: Dev
+
+  ChargeFlowECommerceSqsQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      VisibilityTimeout: 300
+
+  GetProducts:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/getProducts.handler
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ChargeFlowECommerceApi
+            Path: /products
+            Method: get
+  GetProduct:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/getProduct.handler
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ChargeFlowECommerceApi
+            Path: /products/{id}
+            Method: get
+
+  Checkout:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/checkout.handler
+      Environment:
+        Variables:
+          CHARGEFLOW_ECOMMERCE_SQS_QUEUE_URL: !Ref ChargeFlowECommerceSqsQueue
+      Policies:
+        - SQSSendMessagePolicy:
+            QueueName: !GetAtt ChargeFlowECommerceSqsQueue.QueueName
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ChargeFlowECommerceApi
+            Path: /checkout
+            Method: post
+
+  OrderEmailSender:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/orderEmailSender.handler
+      Environment:
+        Variables:
+          SES_IDENTITY_ADDRESS: gid.arces07@gmail.com
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - 'ses:SendEmail'
+                - 'ses:SendRawEmail'
+              Resource: '*'
+      Events:
+        SQS:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt ChargeFlowECommerceSqsQueue.Arn
+            BatchSize: 10
+
+Outputs:
+  ChargeFlowECommerceApiEndpoint:
+    Description: Chargeflow ECommerce Api Endpoint
+    Value: !Sub 'https:${ChargeFlowECommerceApi}.execute-api.${AWS::Region}.amazonaws.com/Dev'
+
+  ChargeFlowECommerceSqsQueueUrl:
+    Description: Chargeflow ECommerce SQS Queue Url
+    Value: !Ref ChargeFlowECommerceSqsQueue
+
+  ChargeFlowECommerceSqsQueueName:
+    Description: Chargeflow ECommerce SQS Queue Name
+    Value: !GetAtt ChargeFlowECommerceSqsQueue.QueueName
+
+  ChargeFlowECommerceSqsQueueArn:
+    Description: Chargeflow ECommerce SQS Queue Arn
+    Value: !GetAtt ChargeFlowECommerceSqsQueue.Arn

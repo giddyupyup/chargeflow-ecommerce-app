@@ -1,0 +1,63 @@
+{
+  "body": "{\n    \"user\": {\n        \"name\": \"Gideon Arces\",\n        \"email\": \"gideon.arces@gmail.com\"\n    },\n    \"productId\": \"62bd2a137ffe67f66e244396\",\n    \"quantity\": 2\n}",
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Content-Length": "35",
+    "Content-Type": "application/json",
+    "Host": "127.0.0.1:3000",
+    "Postman-Token": "6c92e8b7-d449-4079-8686-7894592b6f33",
+    "User-Agent": "PostmanRuntime/7.29.0",
+    "X-Forwarded-Port": "3000",
+    "X-Forwarded-Proto": "http"
+  },
+  "httpMethod": "POST",
+  "isBase64Encoded": false,
+  "multiValueHeaders": {
+    "Accept": ["*/*"],
+    "Accept-Encoding": ["gzip, deflate, br"],
+    "Connection": ["keep-alive"],
+    "Content-Length": ["35"],
+    "Content-Type": ["application/json"],
+    "Host": ["127.0.0.1:3000"],
+    "Postman-Token": ["6c92e8b7-d449-4079-8686-7894592b6f33"],
+    "User-Agent": ["PostmanRuntime/7.29.0"],
+    "X-Forwarded-Port": ["3000"],
+    "X-Forwarded-Proto": ["http"]
+  },
+  "multiValueQueryStringParameters": null,
+  "path": "/checkout",
+  "pathParameters": null,
+  "queryStringParameters": null,
+  "requestContext": {
+    "accountId": "123456789012",
+    "apiId": "1234567890",
+    "domainName": "127.0.0.1:3000",
+    "extendedRequestId": null,
+    "httpMethod": "POST",
+    "identity": {
+      "accountId": null,
+      "apiKey": null,
+      "caller": null,
+      "cognitoAuthenticationProvider": null,
+      "cognitoAuthenticationType": null,
+      "cognitoIdentityPoolId": null,
+      "sourceIp": "127.0.0.1",
+      "user": null,
+      "userAgent": "Custom User Agent String",
+      "userArn": null
+    },
+    "path": "/cart",
+    "protocol": "HTTP/1.1",
+    "requestId": "7abfec73-c08f-438c-965b-0600703cda5e",
+    "requestTime": "30/Jun/2022:03:49:41 +0000",
+    "requestTimeEpoch": 1656560981,
+    "resourceId": "123456",
+    "resourcePath": "/cart",
+    "stage": "Dev"
+  },
+  "resource": "/cart",
+  "stageVariables": null,
+  "version": "1.0"
+}

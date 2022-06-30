@@ -1,0 +1,21 @@
+{
+  "Records": [
+    {
+      "messageId": "d9754a34-62a1-4315-965c-aaeabfac9b1f",
+      "receiptHandle": "AQEB4Qbsu+7mh16YzvwgdS/TOxcnIrOKpOm89auFeEBZIrOwF8GLOrNVuWcdPERpf2yqCVTejTaisLtcKRPOsNf2OYupAd0qz0k/AfQ55TYwP3mqCmHdlvA53uqKtYDGVPwZ3DmpPvjSoC54xe371SlZsZOrkdzs0+/xicM4TgrqsH62e8cyjU36BhDcCHN8zjIURGSJrFCFSA8cL44vsBf1jsbk/FXQStiM1Db68vu6L85puPQE6bO/64NbdszNCBXMeouathA0/jS8q0rcOV96aULmG24ZdWqH0WKRLpI50v5g+L8ylcvOuswjLahZVcaghOvbA0h0AQhiEJnInwL5NW80EG14VW1DaiBhlsW5Z9dYshYVYJFHlP+T6JSYrn0R0DcdZwaTD90o801JgmseAQg8lP3O4SKzV+jxwoFzbSs6DrJ6OT4kRUEG2YlfrsJ0B+Wl4EPkNiVqYVU+23swNg==",
+      "body": "{\"orderId\":\"62bd59834b9c4881c7d03c42\"}",
+      "attributes": {
+        "ApproximateReceiveCount": "4",
+        "AWSTraceHeader": "Root=1-62bd18ec-05cdbccb74907ecc0721674d;Parent=641298d363ad4103;Sampled=0",
+        "SentTimestamp": "1656559854523",
+        "SenderId": "AROAU573ZXGSSKZLMLWYK:chargeflow-ecommerce-app-AddToCart-4j57vKHmUdp1",
+        "ApproximateFirstReceiveTimestamp": "1656559854523"
+      },
+      "messageAttributes": {},
+      "md5OfBody": "bc7be0201337ec1130865fdbe4ba3fef",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:ap-southeast-1:339293616549:chargeflow-ecommerce-app-ChargeFlowECommerceSqsQueue-ZEUqDeL9YtBe",
+      "awsRegion": "ap-southeast-1"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "chargeflow-ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha --timeout 3000 './src/**/*.test.js'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1164.0",
+    "mongodb": "^4.7.0",
+    "winston": "^3.8.0"
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "^5.7.0",
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^10.0.0",
+    "sinon": "^14.0.0"
+  }
+}
