@@ -97,7 +97,9 @@ A serverless service receives an SQS Message from checkout and send an email
 
 ### Sample SQS Message
 
-    aws sqs send-message --queue-url https://sqs.ap-southeast-1.amazonaws.com/339293616549/chargeflow-ecommerce-app-ChargeFlowECommerceSqsQueue-VOuZdHeG5OkM --message-body '{"orderId":"62bd59834b9c4881c7d03c42"}'
+    aws sqs send-message \
+    --queue-url https://sqs.ap-southeast-1.amazonaws.com/339293616549/chargeflow-ecommerce-app-ChargeFlowECommerceSqsQueue-VOuZdHeG5OkM \
+    --message-body '{"orderId":"62bd59834b9c4881c7d03c42"}'
 
 ---
 
