@@ -47,6 +47,25 @@ describe('getProduct', () => {
     );
   });
 
+  it('should return error response when product does not exist', async () => {
+    stub(client, 'connect').resolves({
+      db: stub().returns({
+        collection: stub().returns({
+          findOne: stub().resolves(null),
+        }),
+      }),
+      close: stub().resolves(),
+    });
+
+    const response = await handler({
+      pathParameters: {
+        id: '62bd2a137ffe67f66e244396',
+      },
+    });
+
+    expect(response).to.be.eql(errorResponse({ level: 'error' }));
+  });
+
   it('should return error response when failing on connecting db', async () => {
     stub(client, 'connect').rejects(
       new Error('Error connecting with database'),

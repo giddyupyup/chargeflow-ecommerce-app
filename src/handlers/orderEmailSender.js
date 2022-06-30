@@ -3,9 +3,9 @@ const { ObjectId } = require('mongodb');
 const client = require('../db');
 const logger = require('../utils/logger');
 
-const senderEmailAddress = process.env.SES_IDENTITY_ADDRESS;
-
 exports.handler = async (event) => {
+  const senderEmailAddress = process.env.SES_IDENTITY_ADDRESS;
+
   const sqsRecords = event.Records.map((record) => JSON.parse(record.body));
 
   try {

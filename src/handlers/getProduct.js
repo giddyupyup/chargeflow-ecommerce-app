@@ -24,6 +24,10 @@ exports.handler = async (event) => {
 
     await dbClient.close();
 
+    if (!product) {
+      throw new Error('Product does not exists');
+    }
+
     logger.info('Successful Execution of service');
 
     return successResponse({ statusCode: 200, data: product });
